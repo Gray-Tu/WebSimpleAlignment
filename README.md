@@ -1,6 +1,6 @@
 # WebSimpleAlignment
 Run Alignment example
-
+<p>
 v ATGTTAT
 w ATCGTAC
 
@@ -23,3 +23,4 @@ T.↑↑↑↑↖←←
 T.↑↑↑↑↑↑↑
 A.↑↑↑↑↑↖←
 T.↑↑↑↑↑↑↑
+</p>
