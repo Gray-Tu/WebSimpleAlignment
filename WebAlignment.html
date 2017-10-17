@@ -7,7 +7,17 @@
 <button onclick="myFunction()">Try it</button>
 
 <p id="demo"></p>
-
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+	table-layout:fixed;
+	width:20px;
+	height:20px;
+	text-align: center;
+	
+}
+</style>
 <script>
 
 function myFunction() {
@@ -48,8 +58,7 @@ function alignment(v,w){
 			}
 			else{
 				matrixA[v_i][w_j] = Math.max(matrixA[v_i-1][w_j],
-									matrixA[v_i][w_j-1],
-									matrixA[v_i-1][w_j-1]);
+									matrixA[v_i][w_j-1]);
 			}
 		}
 	}
@@ -82,7 +91,7 @@ function alignment(v,w){
 	}
 	
 	//SetColorPathC
-	var Nv_i, Nw_j;
+	/*var Nv_i, Nw_j;
 	pathC[lenV-1][lenW-1] = 1;	
 	for (v_i = lenV-1; v_i > 1; ){
 		for (w_j = lenW-1; w_j > 1; ){
@@ -92,19 +101,26 @@ function alignment(v,w){
 			v_i = Nv_i;
 			w_j = Nw_j;
 		}
-	}	
+	}*/	
 	//
 	
-	var Result ='<span style="font-family:Lucida Console;font-size: 32px;">-'+ w+"<br>";
+	//var Result ='<span style="font-family:Lucida Console;font-size: 32px;">-'+ w+"<br>";
+	var Result = '<table><tr><td>-</td>'
+		for (w_j = 0; w_j < lenW; w_j++){Result+= "<td>"+w[w_j]+"</td>";}
+		Result+= "</tr>";
+	
 		for (v_i = 0; v_i < lenV; v_i++){
-			Result+=v[v_i];
+			//Result+= v[v_i];
+			Result+="<tr><td>"+v[v_i]+"</td>";
+			
             for(w_j = 0; w_j < lenW; w_j++){
-				
-                Result += matrixA[v_i][w_j];
+				//Result += matrixA[v_i][w_j];
+                Result += "<td>"+matrixA[v_i][w_j]+"</td>";
 			}
-			Result+= "<br>";
+			//Result+= "<br>";
+			Result += "</tr>"
 		}
-    Result+="<br>";
+    Result+='</table><br><span style="font-family:Lucida Console;font-size: 32px;">';
     //path
    	Result+= "-"+w+"<br>";
     	for (v_i = 0; v_i < lenV; v_i++){
@@ -117,7 +133,7 @@ function alignment(v,w){
 		}
 	Result+="<br>";
 	//ColorPath
-	Result+= "-"+w+"<br>";
+	/*Result+= "-"+w+"<br>";
 		for (v_i=0; v_i< lenV; v_i++){
 			Result+=v[v_i];
             for(w_j = 0; w_j < lenW; w_j++){
@@ -127,7 +143,7 @@ function alignment(v,w){
 				else{Result+=pathA[v_i][w_j];}             
 			}
 			Result+= "<br>";
-		}
+		}*/
 	Result+="</span>";
 			
 	return Result
